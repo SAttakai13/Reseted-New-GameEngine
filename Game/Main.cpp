@@ -6,7 +6,6 @@
 #include <vector>
 #include <stdlib.h>
 
-
 int main(int argc, char* argv[])
 {
 	g_engine.Initialize();
@@ -30,7 +29,7 @@ int main(int argc, char* argv[])
 	points.push_back(Vector2{ -5, -5 });
 	points.push_back(Vector2{ -5, 5 });
 	points.push_back(Vector2{ 5, 0 });
-	Model* model = new Model{ points, Colour{ 1, 0, 0 } };
+	Model* model = new Model{ points, Color{ 1, 0, 0 } };
 
 	Scene* scene = new Scene();
 	for (int i = 0; i < 100; i++)
@@ -109,10 +108,10 @@ int main(int argc, char* argv[])
 
 		// DRAW
 		//// clear screen
-		g_engine.GetRenderer().SetColour(0, 0, 0, 0);
+		g_engine.GetRenderer().SetColor(0, 0, 0, 0);
 		g_engine.GetRenderer().BeginFrame();
 
-		g_engine.GetRenderer().SetColour(255, 255, 255, 0);
+		g_engine.GetRenderer().SetColor(255, 255, 255, 0);
 
 		float radius = 100;
 		offset += (90 * time.GetDeltaTime());
@@ -121,19 +120,19 @@ int main(int argc, char* argv[])
 			float x = Math::Cos(Math::DegToRad(angle + offset)) * Math::Sin((offset + angle) * 0.01f) * radius;
 			float y = Math::Sin(Math::DegToRad(angle + offset)) * Math::Cos((offset + angle) * 0.01f) * radius;
 
-			g_engine.GetRenderer().SetColour(rand() % 256, rand() % 256, rand() % 256, 0);
+			g_engine.GetRenderer().SetColor(rand() % 256, rand() % 256, rand() % 256, 0);
 			//renderer.DrawRect(400 + x, 300 + y, randomf(1, 40), randomf(1, 40));
 		}
 
 		//draw particles
 		for (Particle particle : particles)
 		{
-			g_engine.GetRenderer().SetColour(rand() % 256, rand() % 256, rand() % 256, 0);
+			g_engine.GetRenderer().SetColor(rand() % 256, rand() % 256, rand() % 256, 0);
 
 			particle.Draw(g_engine.GetRenderer());
 		}
 
-		g_engine.GetRenderer().SetColour(255, 255, 255, 0);
+		g_engine.GetRenderer().SetColor(255, 255, 255, 0);
 		scene->Draw(g_engine.GetRenderer());
 
 		//// show screen
